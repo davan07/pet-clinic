@@ -1,19 +1,21 @@
 "use client";
 
 import React, { useState } from "react";
-import { CheckCircle2, MessageCircle, Calendar, Clock, User, Phone as PhoneIcon, Heart, FileText } from "lucide-react";
+import { Calendar, User, Phone as PhoneIcon, Heart, CheckCircle2, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/config/siteConfig";
 
 interface AppointmentFormProps {
-  defaultService?: string;
+  onSuccess?: () => void;
   onSuccessClose?: () => void;
+  defaultService?: string;
   className?: string;
 }
 
 export const AppointmentForm: React.FC<AppointmentFormProps> = ({
-  defaultService = "General Consultation",
+  onSuccess,
   onSuccessClose,
+  defaultService = "Veterinary Consultation",
   className = "",
 }) => {
   const [formData, setFormData] = useState({
@@ -23,12 +25,12 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
     petType: "Dog",
     serviceRequired: defaultService,
     preferredDate: "",
-    preferredTime: "Morning (09:00 AM - 12:00 PM)",
+    preferredTime: "Morning (9:00 AM - 12:00 PM)",
     message: "",
   });
 
-  const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
@@ -58,6 +60,8 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
     }
     setErrors({});
     setIsSubmitted(true);
+    if (onSuccess) onSuccess();
+    if (onSuccessClose) onSuccessClose();
   };
 
   const getWhatsAppMessage = () => {
@@ -69,16 +73,16 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
 
   if (isSubmitted) {
     return (
-      <div className={`bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-xl text-center animate-fade-in ${className}`}>
-        <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
-          <CheckCircle2 className="w-10 h-10" />
+      <div className={`bg-white p-6 sm:p-8 rounded-[2.25rem] border border-[#e8e2d6] shadow-[0_12px_36px_rgba(20,61,43,0.06)] text-center animate-fade-in ${className}`}>
+        <div className="w-16 h-16 bg-[#edf5f0] text-[#143d2b] border border-[#cbe0d3] rounded-full flex items-center justify-center mx-auto mb-4 shadow-[0_2px_8px_rgba(20,61,43,0.06)]">
+          <CheckCircle2 className="w-10 h-10 text-[#143d2b]" />
         </div>
-        <h3 className="text-2xl font-bold text-gray-900 mb-2">Appointment Request Drafted</h3>
-        <p className="text-gray-600 text-sm sm:text-base mb-6 leading-relaxed">
-          Thank you, <strong className="text-gray-900">{formData.ownerName}</strong>! Your appointment details for <strong className="text-gray-900">{formData.petName}</strong> have been recorded.
+        <h3 className="text-2xl font-extrabold text-[#14241b] mb-2">Appointment Request Drafted</h3>
+        <p className="text-[#4b5950] text-sm sm:text-base mb-6 leading-relaxed">
+          Thank you, <strong className="text-[#14241b]">{formData.ownerName}</strong>! Your appointment details for <strong className="text-[#14241b]">{formData.petName}</strong> have been recorded.
         </p>
 
-        <div className="bg-[#f0f7f4] border border-[#2d6a4f]/20 p-4 rounded-2xl mb-6 text-left text-sm text-gray-700 space-y-1.5">
+        <div className="bg-[#fcfaf6] border border-[#e8e2d6] p-4 rounded-2xl mb-6 text-left text-sm text-[#3a473e] space-y-1.5">
           <p><strong>Service:</strong> {formData.serviceRequired}</p>
           <p><strong>Date & Time:</strong> {formData.preferredDate} ({formData.preferredTime})</p>
           <p><strong>Phone:</strong> {formData.phone}</p>
@@ -89,37 +93,31 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
             href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-semibold px-6 py-3 rounded-full transition-colors shadow-sm"
+            className="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold px-6 py-3.5 rounded-full transition-all duration-300 shadow-[0_4px_16px_rgba(37,211,102,0.25)] hover:shadow-[0_8px_20px_rgba(37,211,102,0.35)] hover:-translate-y-0.5"
           >
             <MessageCircle className="w-5 h-5 fill-current" />
             <span>Send Details via WhatsApp Immediately</span>
           </a>
 
-          <div className="text-xs text-gray-500 pt-2">
+          <div className="text-xs text-[#526056] pt-2">
             * Note: For backend integration, configure your email API endpoint in siteConfig or server handler.
           </div>
-
-          {onSuccessClose && (
-            <button
-              onClick={onSuccessClose}
-              className="mt-3 text-sm text-gray-600 hover:text-gray-900 font-medium underline"
-            >
-              Close Window
-            </button>
-          )}
         </div>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className={`bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-xl ${className}`}>
-      <div className="mb-6">
-        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 flex items-center gap-2">
-          <Calendar className="w-6 h-6 text-[#1b4332]" />
+    <form
+      onSubmit={handleSubmit}
+      className={`bg-white p-6 sm:p-8 rounded-[2.25rem] border border-[#e8e2d6] shadow-[0_8px_30px_rgba(20,61,43,0.05)] ${className}`}
+    >
+      <div className="mb-6 border-b border-[#f4efe6] pb-4">
+        <h3 className="text-xl font-extrabold text-[#14241b] flex items-center gap-2">
+          <Calendar className="w-5 h-5 text-[#143d2b]" />
           <span>Book an Appointment</span>
         </h3>
-        <p className="text-sm text-gray-600 mt-1">
+        <p className="text-sm text-[#4b5950] mt-1">
           Select your preferred time slot for veterinary care or grooming in Mysore.
         </p>
       </div>
@@ -128,38 +126,38 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
         {/* Owner Name & Phone */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-[#14241b] uppercase tracking-wider mb-1.5">
               Your Name *
             </label>
             <div className="relative">
-              <User className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5" />
+              <User className="w-4 h-4 text-[#526056] absolute left-3.5 top-3.5" />
               <input
                 type="text"
                 placeholder="e.g. Ramesh Kumar"
                 value={formData.ownerName}
                 onChange={(e) => setFormData({ ...formData, ownerName: e.target.value })}
-                className={`w-full pl-10 pr-4 py-2.5 bg-gray-50 border ${
-                  errors.ownerName ? "border-red-500" : "border-gray-200"
-                } rounded-xl text-sm focus:bg-white focus:border-[#1b4332] outline-none transition-all`}
+                className={`w-full pl-10 pr-4 py-2.5 bg-[#fcfaf6] border ${
+                  errors.ownerName ? "border-red-500" : "border-[#e8e2d6]"
+                } rounded-2xl text-sm focus:bg-white focus:border-[#143d2b] focus:ring-2 focus:ring-[#143d2b]/10 outline-none transition-all`}
               />
             </div>
             {errors.ownerName && <p className="text-xs text-red-500 mt-1">{errors.ownerName}</p>}
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-[#14241b] uppercase tracking-wider mb-1.5">
               Phone / Mobile *
             </label>
             <div className="relative">
-              <PhoneIcon className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5" />
+              <PhoneIcon className="w-4 h-4 text-[#526056] absolute left-3.5 top-3.5" />
               <input
                 type="tel"
                 placeholder="e.g. 9876543210"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className={`w-full pl-10 pr-4 py-2.5 bg-gray-50 border ${
-                  errors.phone ? "border-red-500" : "border-gray-200"
-                } rounded-xl text-sm focus:bg-white focus:border-[#1b4332] outline-none transition-all`}
+                className={`w-full pl-10 pr-4 py-2.5 bg-[#fcfaf6] border ${
+                  errors.phone ? "border-red-500" : "border-[#e8e2d6]"
+                } rounded-2xl text-sm focus:bg-white focus:border-[#143d2b] focus:ring-2 focus:ring-[#143d2b]/10 outline-none transition-all`}
               />
             </div>
             {errors.phone && <p className="text-xs text-red-500 mt-1">{errors.phone}</p>}
@@ -169,32 +167,32 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
         {/* Pet Name & Pet Type */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-[#14241b] uppercase tracking-wider mb-1.5">
               Pet Name *
             </label>
             <div className="relative">
-              <Heart className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5" />
+              <Heart className="w-4 h-4 text-[#526056] absolute left-3.5 top-3.5" />
               <input
                 type="text"
                 placeholder="e.g. Bruno / Bella"
                 value={formData.petName}
                 onChange={(e) => setFormData({ ...formData, petName: e.target.value })}
-                className={`w-full pl-10 pr-4 py-2.5 bg-gray-50 border ${
-                  errors.petName ? "border-red-500" : "border-gray-200"
-                } rounded-xl text-sm focus:bg-white focus:border-[#1b4332] outline-none transition-all`}
+                className={`w-full pl-10 pr-4 py-2.5 bg-[#fcfaf6] border ${
+                  errors.petName ? "border-red-500" : "border-[#e8e2d6]"
+                } rounded-2xl text-sm focus:bg-white focus:border-[#143d2b] focus:ring-2 focus:ring-[#143d2b]/10 outline-none transition-all`}
               />
             </div>
             {errors.petName && <p className="text-xs text-red-500 mt-1">{errors.petName}</p>}
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-[#14241b] uppercase tracking-wider mb-1.5">
               Pet Type
             </label>
             <select
               value={formData.petType}
               onChange={(e) => setFormData({ ...formData, petType: e.target.value })}
-              className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:border-[#1b4332] outline-none transition-all"
+              className="w-full px-4 py-2.5 bg-[#fcfaf6] border border-[#e8e2d6] rounded-2xl text-sm focus:bg-white focus:border-[#143d2b] focus:ring-2 focus:ring-[#143d2b]/10 outline-none transition-all"
             >
               <option value="Dog">Dog</option>
               <option value="Cat">Cat</option>
@@ -206,13 +204,13 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
 
         {/* Service Required */}
         <div>
-          <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-bold text-[#14241b] uppercase tracking-wider mb-1.5">
             Service Required
           </label>
           <select
             value={formData.serviceRequired}
             onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })}
-            className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:border-[#1b4332] outline-none transition-all"
+            className="w-full px-4 py-2.5 bg-[#fcfaf6] border border-[#e8e2d6] rounded-2xl text-sm focus:bg-white focus:border-[#143d2b] focus:ring-2 focus:ring-[#143d2b]/10 outline-none transition-all"
           >
             <option value="24/7 Pet Ambulance">24/7 Pet Ambulance</option>
             <option value="Veterinary Consultation">Veterinary Consultation</option>
@@ -229,7 +227,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
         {/* Date & Time */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-[#14241b] uppercase tracking-wider mb-1.5">
               Preferred Date *
             </label>
             <input
@@ -237,52 +235,49 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({
               min={new Date().toISOString().split("T")[0]}
               value={formData.preferredDate}
               onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
-              className={`w-full px-4 py-2.5 bg-gray-50 border ${
-                errors.preferredDate ? "border-red-500" : "border-gray-200"
-              } rounded-xl text-sm focus:bg-white focus:border-[#1b4332] outline-none transition-all`}
+              className={`w-full px-4 py-2.5 bg-[#fcfaf6] border ${
+                errors.preferredDate ? "border-red-500" : "border-[#e8e2d6]"
+              } rounded-2xl text-sm focus:bg-white focus:border-[#143d2b] focus:ring-2 focus:ring-[#143d2b]/10 outline-none transition-all`}
             />
             {errors.preferredDate && <p className="text-xs text-red-500 mt-1">{errors.preferredDate}</p>}
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-[#14241b] uppercase tracking-wider mb-1.5">
               Preferred Time Slot
             </label>
-            <div className="relative">
-              <Clock className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5" />
-              <select
-                value={formData.preferredTime}
-                onChange={(e) => setFormData({ ...formData, preferredTime: e.target.value })}
-                className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:border-[#1b4332] outline-none transition-all"
-              >
-                <option value="Morning (09:00 AM - 12:00 PM)">Morning (09:00 AM - 12:00 PM)</option>
-                <option value="Afternoon (12:00 PM - 04:00 PM)">Afternoon (12:00 PM - 04:00 PM)</option>
-                <option value="Evening (04:00 PM - 08:00 PM)">Evening (04:00 PM - 08:00 PM)</option>
-              </select>
-            </div>
+            <select
+              value={formData.preferredTime}
+              onChange={(e) => setFormData({ ...formData, preferredTime: e.target.value })}
+              className="w-full px-4 py-2.5 bg-[#fcfaf6] border border-[#e8e2d6] rounded-2xl text-sm focus:bg-white focus:border-[#143d2b] focus:ring-2 focus:ring-[#143d2b]/10 outline-none transition-all"
+            >
+              <option value="Morning (9:00 AM - 12:00 PM)">Morning (9:00 AM - 12:00 PM)</option>
+              <option value="Afternoon (12:00 PM - 4:00 PM)">Afternoon (12:00 PM - 4:00 PM)</option>
+              <option value="Evening (4:00 PM - 8:00 PM)">Evening (4:00 PM - 8:00 PM)</option>
+              <option value="Night / Emergency (24/7)">Night / Emergency (24/7)</option>
+            </select>
           </div>
         </div>
 
-        {/* Message */}
+        {/* Message / Symptoms */}
         <div>
-          <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
-            Additional Message / Symptoms (Optional)
+          <label className="block text-xs font-bold text-[#14241b] uppercase tracking-wider mb-1.5">
+            Brief Symptoms / Message (Optional)
           </label>
-          <div className="relative">
-            <FileText className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5" />
-            <textarea
-              rows={2}
-              placeholder="e.g. Needs first puppy vaccine / Skin itching"
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:border-[#1b4332] outline-none transition-all resize-none"
-            />
-          </div>
+          <textarea
+            rows={3}
+            placeholder="e.g. Vaccination booster required, or describe symptoms..."
+            value={formData.message}
+            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            className="w-full px-4 py-2.5 bg-[#fcfaf6] border border-[#e8e2d6] rounded-2xl text-sm focus:bg-white focus:border-[#143d2b] focus:ring-2 focus:ring-[#143d2b]/10 outline-none transition-all resize-none"
+          />
         </div>
 
-        <Button type="submit" variant="primary" size="lg" className="w-full mt-2">
-          Confirm Appointment Request
-        </Button>
+        <div className="pt-2">
+          <Button type="submit" variant="primary" size="lg" className="w-full">
+            Submit Appointment Request
+          </Button>
+        </div>
       </div>
     </form>
   );

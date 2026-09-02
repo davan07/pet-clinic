@@ -21,20 +21,20 @@ export const Button: React.FC<ButtonProps> = ({
   className = "",
   ...props
 }) => {
-  const baseStyles = "inline-flex items-center justify-center font-medium rounded-full transition-all duration-200 focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none cursor-pointer";
+  const baseStyles = "inline-flex items-center justify-center font-bold rounded-full transition-all duration-300 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#007799] focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none cursor-pointer tracking-wide";
   
   const sizeStyles = {
     sm: "px-4 py-2 text-xs sm:text-sm gap-1.5",
     md: "px-5 py-2.5 text-sm sm:text-base gap-2",
-    lg: "px-7 py-3 text-base sm:text-lg gap-2.5 font-semibold shadow-sm hover:shadow-md",
+    lg: "px-7 py-3.5 text-base sm:text-lg gap-2.5 font-bold",
   };
 
   const variantStyles = {
-    primary: "bg-[#1b4332] text-white hover:bg-[#0f281e] active:bg-[#081c15]",
-    secondary: "bg-[#f0f7f4] text-[#1b4332] hover:bg-[#e2ece9] border border-[#2d6a4f]/20",
-    outline: "bg-transparent text-[#1b4332] border-2 border-[#1b4332] hover:bg-[#1b4332] hover:text-white",
-    accent: "bg-[#d97706] text-white hover:bg-[#b45309] active:bg-[#92400e] shadow-sm",
-    ghost: "bg-transparent text-gray-700 hover:bg-gray-100/80 hover:text-gray-900",
+    primary: "bg-[#007799] text-white hover:bg-[#005f7a] shadow-[0_6px_20px_rgba(0,119,153,0.3)] hover:shadow-[0_10px_25px_rgba(0,119,153,0.4)] hover:-translate-y-0.5 border border-[#0088b3]",
+    secondary: "bg-[#e0f7f5] text-[#007799] hover:bg-[#cbf1ee] border border-[#b2ebe5] shadow-xs hover:-translate-y-0.5",
+    outline: "bg-transparent text-[#007799] border-2 border-[#007799] hover:bg-[#007799] hover:text-white hover:shadow-md hover:-translate-y-0.5",
+    accent: "bg-[#d97706] text-white hover:bg-[#b45309] shadow-[0_6px_20px_rgba(217,119,6,0.3)] hover:shadow-[0_10px_25px_rgba(217,119,6,0.4)] hover:-translate-y-0.5 border border-amber-500/30",
+    ghost: "bg-transparent text-[#0f2942] hover:bg-[#e0f7f5] hover:text-[#007799]",
   };
 
   const combinedClasses = `${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${className}`;

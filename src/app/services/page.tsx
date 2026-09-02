@@ -3,12 +3,13 @@ import { Metadata } from "next";
 import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ServiceCard } from "@/components/shared/ServiceCard";
+import { QuickServices } from "@/components/sections/QuickServices";
 import { servicesData } from "@/config/servicesData";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 
 export const metadata: Metadata = {
   title: "Veterinary Services & Pet Healthcare in Mysore",
-  description: "Comprehensive veterinary services in Mysore at Shree Pet Hospital. Consultation, vaccination, surgery, diagnostics, dental scaling, emergency care, and pet grooming.",
+  description: "Comprehensive 24/7 veterinary services in Mysore at Shree Pet Hospital. Consultation, vaccination, surgery, diagnostics, dental scaling, 24/7 pet ambulance, emergency care, and pet grooming.",
   alternates: {
     canonical: "/services",
   },
@@ -17,24 +18,29 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <div className="bg-[#faf8f5]">
-      <section className="bg-gradient-to-b from-[#f0f7f4] to-[#faf8f5] py-12 sm:py-16 border-b border-gray-100">
+      {/* Header Banner */}
+      <section className="bg-gradient-to-b from-[#e0f7f5] to-[#faf8f5] py-12 sm:py-16 border-b border-[#b2ebe5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Breadcrumbs items={[{ label: "Services" }]} />
           <div className="max-w-3xl">
-            <span className="inline-block px-3.5 py-1 mb-3 text-xs font-semibold tracking-wider text-[#1b4332] uppercase bg-white rounded-full border border-[#2d6a4f]/20">
+            <span className="inline-block px-3.5 py-1 mb-3 text-xs font-extrabold tracking-wider text-[#007799] uppercase bg-white rounded-full border border-[#b2ebe5]">
               Veterinary & Grooming Services
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0f2942] tracking-tight leading-tight">
               Complete Health & Wellness Services for Your Pets
             </h1>
-            <p className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed">
-              Professional clinical consultation, diagnostic testing, surgical procedures, vaccinations, and grooming in Mysore.
+            <p className="mt-4 text-base sm:text-lg text-[#476582] font-medium leading-relaxed">
+              Professional 24/7 clinical consultation, diagnostic testing, surgical procedures, vaccinations, 24/7 pet ambulance, and grooming in Mysore.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-16 sm:py-24">
+      {/* Flagship Center Dog & Cat Showcase Layout */}
+      <QuickServices />
+
+      {/* Grid of All Services */}
+      <section className="py-16 sm:py-24 bg-[#faf8f5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             badge="All Services"

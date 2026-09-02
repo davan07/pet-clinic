@@ -1,15 +1,15 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Phone, Mail, Clock, MessageCircle, Navigation, Scissors } from "lucide-react";
+import { MapPin, Clock, MessageCircle, Navigation, Scissors } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
 import { servicesData } from "@/config/servicesData";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#0f281e] text-white pt-16 pb-24 md:pb-12 border-t border-[#2d6a4f]/30">
+    <footer className="bg-[#063d4d] text-white pt-16 pb-24 md:pb-12 border-t border-cyan-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 pb-12 border-b border-[#2d6a4f]/30">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 pb-12 border-b border-cyan-800/40">
           {/* Col 1: Brand & Tagline */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-3">
@@ -21,14 +21,14 @@ export const Footer: React.FC = () => {
                   className="object-cover"
                 />
               </div>
-              <span className="text-xl font-bold tracking-tight text-white">
+              <span className="text-xl font-extrabold tracking-tight text-white uppercase">
                 {siteConfig.name}
               </span>
             </Link>
-            <p className="text-sm text-emerald-100/80 leading-relaxed">
+            <p className="text-sm text-cyan-100/90 leading-relaxed font-medium">
               {siteConfig.tagline}
             </p>
-            <p className="text-xs text-emerald-200/60 leading-relaxed">
+            <p className="text-xs text-cyan-200/70 leading-relaxed">
               Compassionate 24/7 veterinary care, advanced diagnostics, spay/neuter surgery, and gentle grooming for pets in Mysore.
             </p>
 
@@ -49,7 +49,7 @@ export const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="w-9 h-9 rounded-full bg-white/10 hover:bg-amber-500 hover:text-gray-900 flex items-center justify-center transition-colors"
+                className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#007799] hover:text-white flex items-center justify-center transition-colors"
               >
                 <span className="text-xs font-bold">ig</span>
               </a>
@@ -67,50 +67,50 @@ export const Footer: React.FC = () => {
 
           {/* Col 2: Quick Links */}
           <div>
-            <h4 className="text-base font-bold text-white uppercase tracking-wider mb-4 border-b border-[#2d6a4f]/50 pb-2">
+            <h4 className="text-base font-extrabold text-white uppercase tracking-wider mb-4 border-b border-cyan-800/40 pb-2">
               Quick Links
             </h4>
-            <ul className="space-y-2.5 text-sm text-emerald-100/80">
+            <ul className="space-y-2.5 text-sm text-cyan-100/80">
               <li>
-                <Link href="/" className="hover:text-amber-400 transition-colors">Home</Link>
+                <Link href="/" className="hover:text-amber-300 transition-colors">Home</Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-amber-400 transition-colors">About Us & Team</Link>
+                <Link href="/about" className="hover:text-amber-300 transition-colors">About Us & Team</Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-amber-400 transition-colors">Veterinary Services</Link>
+                <Link href="/services" className="hover:text-amber-300 transition-colors">Veterinary Services</Link>
               </li>
               <li>
-                <Link href="/grooming" className="hover:text-amber-400 transition-colors">Pet Grooming Wing</Link>
+                <Link href="/grooming" className="hover:text-amber-300 transition-colors">Pet Grooming Wing</Link>
               </li>
               <li>
-                <Link href="/doctors" className="hover:text-amber-400 transition-colors">Veterinary Doctors</Link>
+                <Link href="/doctors" className="hover:text-amber-300 transition-colors">Veterinary Doctors</Link>
               </li>
               <li>
-                <Link href="/gallery" className="hover:text-amber-400 transition-colors">Hospital Gallery</Link>
+                <Link href="/gallery" className="hover:text-amber-300 transition-colors">Hospital Gallery</Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-amber-400 transition-colors">Pet Care Articles</Link>
+                <Link href="/blog" className="hover:text-amber-300 transition-colors">Pet Care Articles</Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-amber-400 transition-colors">Contact & Directions</Link>
+                <Link href="/contact" className="hover:text-amber-300 transition-colors">Contact & Directions</Link>
               </li>
             </ul>
           </div>
 
           {/* Col 3: Veterinary Services */}
           <div>
-            <h4 className="text-base font-bold text-white uppercase tracking-wider mb-4 border-b border-[#2d6a4f]/50 pb-2">
+            <h4 className="text-base font-extrabold text-white uppercase tracking-wider mb-4 border-b border-cyan-800/40 pb-2">
               Services
             </h4>
-            <ul className="space-y-2 text-xs sm:text-sm text-emerald-100/80">
+            <ul className="space-y-2 text-xs sm:text-sm text-cyan-100/80">
               {servicesData.map((svc) => (
                 <li key={svc.slug}>
                   <Link
                     href={svc.slug === "grooming" ? "/grooming" : `/services/${svc.slug}`}
-                    className="hover:text-amber-400 transition-colors flex items-center gap-1.5"
+                    className="hover:text-amber-300 transition-colors flex items-center gap-1.5"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
                     <span>{svc.title}</span>
                   </Link>
                 </li>
@@ -120,10 +120,10 @@ export const Footer: React.FC = () => {
 
           {/* Col 4: Locations & Hours */}
           <div className="space-y-4">
-            <h4 className="text-base font-bold text-white uppercase tracking-wider mb-4 border-b border-[#2d6a4f]/50 pb-2">
+            <h4 className="text-base font-extrabold text-white uppercase tracking-wider mb-4 border-b border-cyan-800/40 pb-2">
               Locations & Contact
             </h4>
-            <div className="space-y-3 text-xs text-emerald-100/80">
+            <div className="space-y-3 text-xs text-cyan-100/80">
               <div>
                 <strong className="text-white flex items-center gap-1">
                   <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
@@ -134,13 +134,13 @@ export const Footer: React.FC = () => {
                   href={siteConfig.location.googleMapsDirectionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-amber-400 hover:underline text-[11px] inline-flex items-center gap-1 mt-0.5"
+                  className="text-amber-300 hover:underline text-[11px] inline-flex items-center gap-1 mt-0.5"
                 >
                   <Navigation className="w-3 h-3" /> Hospital Map Directions
                 </a>
               </div>
 
-              <div className="pt-2 border-t border-[#2d6a4f]/40">
+              <div className="pt-2 border-t border-cyan-800/40">
                 <strong className="text-white flex items-center gap-1">
                   <Scissors className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                   <span>Grooming Spa Location:</span>
@@ -150,17 +150,16 @@ export const Footer: React.FC = () => {
                   href={siteConfig.groomingLocation.googleMapsDirectionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-amber-400 hover:underline text-[11px] inline-flex items-center gap-1 mt-0.5"
+                  className="text-amber-300 hover:underline text-[11px] inline-flex items-center gap-1 mt-0.5"
                 >
                   <Navigation className="w-3 h-3" /> Grooming Spa Map Directions
                 </a>
               </div>
 
-              <div className="pt-2 border-t border-[#2d6a4f]/40 flex items-start gap-2">
+              <div className="pt-2 border-t border-cyan-800/40 flex items-start gap-2">
                 <Clock className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
                 <div>
                   <p>{siteConfig.openingHours.weekday}</p>
-                  <p>{siteConfig.openingHours.sunday}</p>
                 </div>
               </div>
             </div>
@@ -168,12 +167,12 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-200/60">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cyan-200/60">
           <p>© {new Date().getFullYear()} {siteConfig.name}, Mysuru. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <Link href="/contact" className="hover:text-amber-400 transition-colors">Privacy Policy</Link>
-            <Link href="/contact" className="hover:text-amber-400 transition-colors">Terms of Service</Link>
-            <Link href="/sitemap.xml" className="hover:text-amber-400 transition-colors">Sitemap</Link>
+            <Link href="/contact" className="hover:text-amber-300 transition-colors">Privacy Policy</Link>
+            <Link href="/contact" className="hover:text-amber-300 transition-colors">Terms of Service</Link>
+            <Link href="/sitemap.xml" className="hover:text-amber-300 transition-colors">Sitemap</Link>
           </div>
         </div>
       </div>

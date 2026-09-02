@@ -20,15 +20,16 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
   return (
     <div className={`mb-10 sm:mb-14 ${alignClass} ${className}`}>
       {badge && (
-        <span className="inline-block px-3.5 py-1 mb-3 text-xs font-semibold tracking-wider text-[#1b4332] uppercase bg-[#f0f7f4] border border-[#2d6a4f]/20 rounded-full">
+        <span className="inline-flex items-center gap-1.5 px-4 py-1.5 mb-3.5 text-xs font-extrabold tracking-widest text-[#007799] uppercase bg-[#e0f7f5] border border-[#b2ebe5] rounded-full shadow-xs">
+          <span className="w-2 h-2 rounded-full bg-[#007799]" />
           {badge}
         </span>
       )}
-      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-gray-900 leading-snug">
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#0f2942] leading-tight">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-3.5 text-base sm:text-lg text-gray-600 leading-relaxed">
+        <p className="mt-3.5 text-base sm:text-lg text-[#476582] leading-relaxed">
           {subtitle}
         </p>
       )}

@@ -11,17 +11,18 @@ export const CtaBanner: React.FC = () => {
 
   return (
     <>
-      <section className="py-16 sm:py-20 bg-gradient-to-r from-[#1b4332] to-[#0f281e] text-white relative overflow-hidden">
+      <section className="py-16 sm:py-24 bg-gradient-to-br from-[#143d2b] via-[#0d281c] to-[#071911] text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <span className="inline-block px-3.5 py-1 mb-4 text-xs font-semibold tracking-wider uppercase bg-white/10 text-amber-300 rounded-full border border-white/10">
+          <span className="inline-flex items-center gap-1.5 px-4 py-1.5 mb-5 text-xs font-bold tracking-widest uppercase bg-white/10 text-amber-300 rounded-full border border-white/15 backdrop-blur-md">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
             Convenient Pet Care in Mysore
           </span>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4 max-w-3xl mx-auto leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4 max-w-3xl mx-auto leading-tight">
             Schedule Your Pet&apos;s Health Checkup or Grooming Session Today
           </h2>
 
-          <p className="text-emerald-100/90 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+          <p className="text-emerald-100/90 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
             Our veterinary team at Shree Pet Hospital is dedicated to keeping your dogs, cats, and small animals active, happy, and healthy.
           </p>
 
@@ -50,7 +51,7 @@ export const CtaBanner: React.FC = () => {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-semibold px-6 py-3 rounded-full transition-all text-base shadow-sm"
+              className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold px-7 py-3.5 rounded-full transition-all duration-300 text-base shadow-[0_6px_20px_rgba(37,211,102,0.3)] hover:shadow-[0_10px_25px_rgba(37,211,102,0.4)] hover:-translate-y-0.5"
             >
               <MessageCircle className="w-5 h-5 fill-current" />
               <span>WhatsApp Us</span>
@@ -59,7 +60,7 @@ export const CtaBanner: React.FC = () => {
         </div>
 
         {/* Decorative background glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
       </section>
 
       <AppointmentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

@@ -16,14 +16,14 @@ export const MobileBottomBar: React.FC = () => {
 
   return (
     <>
-      <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-2xl py-2 px-3">
-        <div className="grid grid-cols-4 gap-1 text-center">
+      <div className="md:hidden fixed bottom-3 inset-x-3 z-40 bg-white/85 backdrop-blur-xl border border-white/80 shadow-[0_12px_36px_rgba(20,61,43,0.14)] rounded-full py-2 px-3">
+        <div className="grid grid-cols-4 gap-1.5 text-center items-center">
           {/* Call */}
           <a
             href={phoneHref}
-            className="flex flex-col items-center justify-center py-1 text-xs font-semibold text-gray-700 hover:text-[#1b4332] active:scale-95 transition-all"
+            className="flex flex-col items-center justify-center py-1 text-[11px] font-bold text-[#14241b] hover:text-[#143d2b] active:scale-95 transition-all"
           >
-            <div className="w-8 h-8 rounded-full bg-emerald-50 text-[#1b4332] flex items-center justify-center mb-0.5">
+            <div className="w-8 h-8 rounded-full bg-[#edf5f0]/90 backdrop-blur-md text-[#143d2b] border border-[#cbe0d3] flex items-center justify-center mb-0.5 shadow-xs">
               <Phone className="w-4 h-4" />
             </div>
             <span>Call</span>
@@ -34,9 +34,9 @@ export const MobileBottomBar: React.FC = () => {
             href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center justify-center py-1 text-xs font-semibold text-gray-700 hover:text-[#25D366] active:scale-95 transition-all"
+            className="flex flex-col items-center justify-center py-1 text-[11px] font-bold text-[#14241b] hover:text-[#25D366] active:scale-95 transition-all"
           >
-            <div className="w-8 h-8 rounded-full bg-emerald-50 text-[#25D366] flex items-center justify-center mb-0.5">
+            <div className="w-8 h-8 rounded-full bg-emerald-50/90 backdrop-blur-md text-[#25D366] border border-emerald-200/80 flex items-center justify-center mb-0.5 shadow-xs">
               <MessageCircle className="w-4 h-4 fill-current" />
             </div>
             <span>WhatsApp</span>
@@ -47,9 +47,9 @@ export const MobileBottomBar: React.FC = () => {
             href={directionsHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center justify-center py-1 text-xs font-semibold text-gray-700 hover:text-[#d97706] active:scale-95 transition-all"
+            className="flex flex-col items-center justify-center py-1 text-[11px] font-bold text-[#14241b] hover:text-[#d97706] active:scale-95 transition-all"
           >
-            <div className="w-8 h-8 rounded-full bg-amber-50 text-[#d97706] flex items-center justify-center mb-0.5">
+            <div className="w-8 h-8 rounded-full bg-amber-50/90 backdrop-blur-md text-[#d97706] border border-amber-200/80 flex items-center justify-center mb-0.5 shadow-xs">
               <Navigation className="w-4 h-4" />
             </div>
             <span>Directions</span>
@@ -58,7 +58,7 @@ export const MobileBottomBar: React.FC = () => {
           {/* Book */}
           <button
             onClick={() => setIsModalOpen(true)}
-            className="flex flex-col items-center justify-center py-1 text-xs font-bold text-white bg-[#1b4332] rounded-2xl active:scale-95 transition-all shadow-xs"
+            className="flex flex-col items-center justify-center py-1 text-[11px] font-bold text-white bg-[#143d2b] rounded-full active:scale-95 transition-all shadow-[0_4px_14px_rgba(20,61,43,0.3)]"
           >
             <Calendar className="w-4 h-4 mb-0.5" />
             <span>Book</span>
