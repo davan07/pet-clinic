@@ -1,0 +1,67 @@
+export const siteConfig = {
+  name: "Shree Pet Hospital",
+  tagline: "24/7 Veterinary Care & Pet Grooming in Mysore (Estd. 2017)",
+  establishedYear: "2017",
+  description: "Premier 24/7 veterinary hospital and pet grooming facility in Mysore, Karnataka (Estd. 2017). Providing 24-hour emergency care, surgery, diagnostics, vaccination, and grooming for dogs, cats, and companion animals.",
+  url: "https://shreepethospitalmysore.com", // Canonical base URL
+  logoUrl: "/images/logo.jpg",
+  location: {
+    city: "Mysuru",
+    state: "Karnataka",
+    pincode: "570017",
+    country: "India",
+    address: "Second Phase, Vijayanagar Fourth Stage 5111, opposite Park, near Polar Bear, Basavanahalli, Mysuru, Bhogadi, Karnataka 570017",
+    fullAddress: "Shree Pet Hospital, Second Phase, Vijayanagar 4th Stage 5111, opposite Park, near Polar Bear, Basavanahalli, Mysuru, Bhogadi, Karnataka 570017",
+    geo: {
+      latitude: 12.3198,
+      longitude: 76.5833,
+    },
+    googleMapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3898.118670868846!2d76.5807307759365!3d12.30752538793081!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baf718d7f27ad09%3A0xc34b3ed5c98d75cf!2sSHREE%20PET%20HOSPITAL!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
+    googleMapsDirectionsUrl: "https://maps.app.goo.gl/rydUsXpHvSSSVsv78",
+  },
+  groomingLocation: {
+    name: "Shree Pet Grooming Spa",
+    address: "4944, behind Polar Bear, opposite Bata Showroom, 2nd Phase, Vijayanagar 4th Stage, Mysuru, Bhogadi, Karnataka 570017",
+    googleMapsDirectionsUrl: "https://share.google/2qU8630NikLcHr1hX",
+  },
+  contact: {
+    phonePrimaryDisplay: "+91 94807 02704",
+    phoneSecondaryDisplay: "+91 97312 21312",
+    phoneDisplayCombined: "+91 94807 02704 / +91 97312 21312",
+    phoneRaw: process.env.NEXT_PUBLIC_PHONE_NUMBER || "+919480702704",
+    phoneRawPrimary: process.env.NEXT_PUBLIC_PHONE_NUMBER || "+919480702704",
+    phoneRawSecondary: "+919731221312",
+    whatsappDisplay: "+91 63628 55844",
+    whatsappRaw: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "916362855844",
+    email: "contact@shreepethospitalmysore.com",
+  },
+  openingHours: {
+    display: "Open 24 Hours / 7 Days a Week",
+    weekday: "24 Hours Open (Mon - Sun)",
+    sunday: "24 Hours Open",
+    emergencyNote: "24/7 Immediate Veterinary Emergency & Trauma Care",
+  },
+  social: {
+    youtube: "https://www.youtube.com/@shreepethospital",
+    instagram: "https://www.instagram.com/shreepethospital_official/",
+    googleReviewUrl: "https://maps.app.goo.gl/rydUsXpHvSSSVsv78",
+  },
+  whatsappPrefillMsg: "Hello Shree Pet Hospital, I would like to book an appointment for my pet.",
+  keywords: [
+    "24/7 Pet Hospital in Mysore",
+    "24 Hours Veterinary Hospital Mysore",
+    "24 Hours Vet in Mysore",
+    "Emergency Pet Hospital Mysore",
+    "Pet Clinic in Mysore",
+    "Vet in Mysore",
+    "Pet Grooming in Mysore",
+    "Dog Grooming in Mysore",
+    "Cat Grooming in Mysore",
+    "Dog Vaccination in Mysore",
+    "Cat Vaccination in Mysore",
+    "Veterinary Surgery Mysore",
+    "Pet Diagnostics Mysore",
+    "Animal Doctor Mysore",
+    "Vijayanagar 4th Stage Pet Hospital"
+  ]
+};
