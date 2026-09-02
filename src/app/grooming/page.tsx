@@ -5,7 +5,7 @@ import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FAQSection } from "@/components/shared/FAQSection";
 import { CtaBanner } from "@/components/sections/CtaBanner";
-import { Sparkles, Scissors, Droplets, Heart, CheckCircle2, ShieldCheck } from "lucide-react";
+import { Sparkles, Scissors, Droplets, Heart, ShieldCheck } from "lucide-react";
 import { JsonLd } from "@/components/shared/JsonLd";
 
 export const metadata: Metadata = {
@@ -83,31 +83,31 @@ export default function GroomingPage() {
       />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-[#e8f5e9] via-[#faf8f5] to-[#faf8f5] py-12 sm:py-16 border-b border-gray-100">
+      <section className="bg-gradient-to-b from-[#e0f7f5] via-[#faf8f5] to-[#faf8f5] py-12 sm:py-16 border-b border-[#b2ebe5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Breadcrumbs items={[{ label: "Pet Grooming" }]} />
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-4">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#2d6a4f]/20 text-[#1b4332] text-xs font-semibold uppercase tracking-wider">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#b2ebe5] text-[#007799] text-xs font-extrabold uppercase tracking-wider">
                 <Sparkles className="w-4 h-4 text-amber-500 fill-current" />
                 Spa & Grooming Wing
               </span>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0f2942] tracking-tight leading-tight">
                 Professional Pet Grooming in Mysore
               </h1>
-              <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl">
+              <p className="text-base sm:text-lg text-[#476582] font-medium leading-relaxed max-w-2xl">
                 Keep your dogs and cats fresh, hygienic, and looking their absolute best in a clean, stress-free grooming environment.
               </p>
             </div>
             <div className="lg:col-span-5">
               <div className="relative h-64 sm:h-80 w-full rounded-3xl overflow-hidden shadow-xl border-4 border-white">
                 <Image
-                  src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=1200&q=80"
-                  alt="Dog receiving bath and grooming at Shree Pet Hospital Mysore"
+                  src="/images/hospital-team.jpg"
+                  alt="Shree Pet Grooming Spa team and grooming wing in Mysore"
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover"
+                  className="object-cover object-center"
                 />
               </div>
             </div>
@@ -128,12 +128,12 @@ export default function GroomingPage() {
             {groomingServices.map((g, idx) => {
               const Icon = g.icon;
               return (
-                <div key={idx} className="bg-white p-7 rounded-3xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300">
-                  <div className="w-12 h-12 rounded-2xl bg-[#f0f7f4] text-[#1b4332] flex items-center justify-center mb-5">
+                <div key={idx} className="bg-white p-7 rounded-3xl border border-[#b2ebe5] shadow-xs hover:shadow-md transition-all duration-300">
+                  <div className="w-12 h-12 rounded-2xl bg-[#e0f7f5] text-[#007799] flex items-center justify-center mb-5 font-bold">
                     <Icon className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{g.title}</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">{g.desc}</p>
+                  <h3 className="text-xl font-bold text-[#0f2942] mb-2">{g.title}</h3>
+                  <p className="text-sm text-[#476582] leading-relaxed">{g.desc}</p>
                 </div>
               );
             })}
@@ -152,19 +152,19 @@ export default function GroomingPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {processSteps.map((step, i) => (
-              <div key={i} className="bg-[#faf8f5] p-6 rounded-3xl border border-gray-100 space-y-3">
-                <div className="w-10 h-10 rounded-xl bg-[#1b4332] text-white font-bold flex items-center justify-center text-sm">
+              <div key={i} className="bg-[#fcfaf6] p-6 rounded-3xl border border-[#e0f7f5] space-y-3">
+                <div className="w-10 h-10 rounded-xl bg-[#007799] text-white font-bold flex items-center justify-center text-sm">
                   0{i + 1}
                 </div>
-                <h4 className="font-bold text-gray-900 text-base">{step.title}</h4>
-                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{step.desc}</p>
+                <h4 className="font-bold text-[#0f2942] text-base">{step.title}</h4>
+                <p className="text-xs sm:text-sm text-[#476582] leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Before & After Showcase / Photo Showcase */}
+      {/* Grooming Photo Showcase */}
       <section className="py-16 sm:py-24 bg-[#faf8f5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
